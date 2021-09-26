@@ -6,7 +6,7 @@
 
 ## live site link:
 
-open:
+open:https://hardcore-meninsky-62f421.netlify.app/
 
 ### `yarn start`
 
