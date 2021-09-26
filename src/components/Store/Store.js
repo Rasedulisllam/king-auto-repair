@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import Service from '../Service/Service';
+import './Store.css'
 
 const Store = () => {
     const [services,setServices]=useState([])
     useEffect(()=>{
         fetch('./fakeData.json')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => setServices(data))
     },[])
+
+    // handle click event
+    const handleAddService=service=>{
+        console.log(service)
+    }
+
     return (
         <div>
             
-            <div>
-                
+            <div className="services">
+                {
+                    services.map(service => <Service
+                         service={service} 
+                         key={service.id}
+                         handleAddService={handleAddService}
+                         ></Service>)
+                }
             </div>
         </div>
     );
