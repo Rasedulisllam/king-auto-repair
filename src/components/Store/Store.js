@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import Cart from '../Cart/Cart';
 import Service from '../Service/Service';
 import './Store.css'
 
 const Store = () => {
     const [services,setServices]=useState([])
+    const [selectedServices,setSelectedServices]=useState([])
+
+    // fetching data
     useEffect(()=>{
         fetch('./fakeData.json')
             .then(res => res.json())
@@ -11,13 +15,13 @@ const Store = () => {
     },[])
 
     // handle click event
-    const handleAddService=service=>{
-        console.log(service)
+    const handleAddService=service=>{ 
+        const newSelectedServices=[...selectedServices,service];
+        setSelectedServices(newSelectedServices)
     }
 
     return (
-        <div>
-            
+        <div className='store-main'>    
             <div className="services">
                 {
                     services.map(service => <Service
@@ -26,6 +30,9 @@ const Store = () => {
                          handleAddService={handleAddService}
                          ></Service>)
                 }
+            </div>
+            <div>
+                <Cart selectedServices={selectedServices}></Cart>
             </div>
         </div>
     );

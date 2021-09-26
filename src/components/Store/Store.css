@@ -1,4 +1,7 @@
 
+.store-main{
+    display: flex;
+}
 .services{
     display: grid;
     grid-template-columns:repeat(3,1fr);

@@ -5,14 +5,13 @@ import { faCarBattery } from '@fortawesome/free-solid-svg-icons'
 
 
 const Service = props => {
-    // console.log(props.handleAddService)
-    // getting font awasome icon 
+    // gett font awasome icon 
     const btnIcon=<FontAwesomeIcon icon={faCarBattery} />
 
     // destracturing props object
     const {serviceName,img,details,serviceTime,serviceCost,extraService}=props.service;
 
-    // clculating time hour and minute
+    // calculate time hour and minute
     const tiemCalculation=min=>{
         let hour=0;
         let minute=0;
@@ -29,6 +28,8 @@ const Service = props => {
             hour
         }
     }
+
+    // destructure calculate time
     const {hour,minute}=tiemCalculation(serviceTime);
     
     return (
@@ -42,7 +43,7 @@ const Service = props => {
                 <p>Estimate time: {hour}:{minute} min</p>              
                 <p>Cost: ${serviceCost}</p>
                 <p>Extra: {extraService}.</p>
-                <button onClick={()=>props.handleAddService(props.service.serviceName)}  className='service-btn'>{btnIcon} Get service</button>
+                <button onClick={()=>props.handleAddService(props.service)}  className='service-btn'>{btnIcon} Get service</button>
             </div>
         </div>
     );
